@@ -1,0 +1,20 @@
+{% extends 'encyclopedia/layout.html' %}
+
+{% block title %}
+    Edit Page {{ title }}
+{% endblock %}
+
+{% block body %}
+
+  <h1>Редагування сторінки Вікіпедії "{{ title }}"</h1>
+
+  <p>Використовуйте форму нижче, щоб відредагувати сторінку Вікіпедії "{{ title }}".</p>
+  <p>Зверніть увагу, що Вікіпедія використовує <a href="https://docs.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax">Github Markdown</a> для стилізації своїх сторінок, який перетворюється на HTML, коли користувач запитує записи.</p>
+
+  <form action="{% url 'edit' title=title %}" method="post">
+    {% csrf_token %}
+    {{ edit_form }}
+    <input class="btn btn-primary" type="submit" value="Submit">
+  </form>
+
+{% endblock %}

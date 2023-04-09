@@ -1,0 +1,20 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create Page
+{% endblock %}
+
+{% block body %}
+
+  <h1>Створити нову сторінку Вікіпедії:</h1>
+
+  <p>Використовуйте форму нижче, щоб створити нову сторінку Вікіпедії.</p>
+  <p>Зверніть увагу, що Вікіпедія використовує <a href="https://docs.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax">Github Markdown</a> для стилізації своїх сторінок, який перетворюється на HTML, коли користувач запитує записи.</p>
+
+  <form action="{% url 'create' %}" method="post">
+    {% csrf_token %}
+    {{ create_form }}
+    <input class= "btn btn-primary" type="submit" value="Submit">
+  </form>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'encyclopedia/layout.html' %}
+
+{% block title %}
+    Search Results: {{title}}
+{% endblock %}
+
+{% block body %}
+
+  <h1>Шукати результати для "{{title}}":</h1>
+
+  {% if related_titles %}
+  <p>Запитанні сторінки:</p>
+    <ul>
+      {% for title in related_titles %}
+      <li><a href="{% url 'entry' title=title %}">{{title}}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+  <p>Немає результатів для "{{title}}" на Вікіпедії.</p>
+  <p>Check the <a href="{% url 'index' %}">index</a> page to see available articles.</p>
+  {% endif %}
+
+{% endblock %}
